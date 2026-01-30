@@ -1,0 +1,48 @@
+
+> frontend@0.0.0 lint
+> eslint .
+
+
+D:\task 2\blog-application\frontend\src\components\PostForm.jsx
+  23:8   warning  React Hook useEffect has missing dependencies: 'isEdit' and 'loadPost'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  34:18  error    'err' is defined but never used                                                                                             no-unused-vars
+
+D:\task 2\blog-application\frontend\src\pages\PostList.jsx
+   5:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+  12:9   error  Error: Cannot access variable before it is declared
+
+`loadPosts` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  10 |
+  11 |     useEffect(() => {
+> 12 |         loadPosts();
+     |         ^^^^^^^^^ `loadPosts` accessed before it is declared
+  13 |     }, []);
+  14 |
+  15 |     const loadPosts = async () => {
+
+  13 |     }, []);
+  14 |
+> 15 |     const loadPosts = async () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |         try {
+     | ^^^^^^^^^^^^^
+> 17 |             const { data } = await getPosts();
+     | ^^^^^^^^^^^^^
+> 18 |             setPosts(data);
+     | ^^^^^^^^^^^^^
+> 19 |         } catch (error) {
+     | ^^^^^^^^^^^^^
+> 20 |             console.error("Error fetching posts:", error);
+     | ^^^^^^^^^^^^^
+> 21 |         }
+     | ^^^^^^^^^^^^^
+> 22 |     };
+     | ^^^^^^^ `loadPosts` is declared here
+  23 |
+  24 |     const handleDelete = async (id) => {
+  25 |         if (window.confirm("Are you sure you want to delete this post?")) {  react-hooks/immutability
+  29:22  error  'error' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      no-unused-vars
+
+Γ£û 5 problems (4 errors, 1 warning)
+
